@@ -15,26 +15,37 @@ struct ContentView: View {
     
     var body: some View {
         VStack{
-            TextField("Enter a city", text: self.$city, onEditingChanged:{ _ in }, onCommit: {
-                self.weatherVM.loadWeather(city: self.city)
+            TextField("Enter a city", text: $city, onEditingChanged:{ _ in }, onCommit: {
+                weatherVM.loadWeather(city: city)
             }).textFieldStyle(RoundedBorderTextFieldStyle())
-    
-                
+            
+            
+           
             Spacer()
-            if self.weatherVM.loadingState == .loading {
-                Text("Loading...")
+            List{
+                ForEach(weatherVM.weather) { weatherItem in
+                    WeatherView(temp: weatherItem.main.temperature, city: weatherItem.city ?? "City error" )
+                }
             }
-            else if self.weatherVM.loadingState == .success{
-                WeatherView(temp: self.weatherVM.temp, city: self.city)
-                    
-            } else if self.weatherVM.loadingState == .failed {
-                Text("Could not load weather")
-            }
+          //  weatherInfoView
             
         }.padding()
         
-            }
+    }
     
+//    var weatherInfoView: some View {
+//        Group {
+//            if weatherVM.loadingState == .loading {
+//                Text("Loading...")
+//            }
+//            else if weatherVM.loadingState == .success{
+//                WeatherView(temp: weatherVM.temperature, city: city)
+//                
+//            } else if weatherVM.loadingState == .failed {
+//                Text("Could not load weather")
+//            }
+//        }
+//    }
     
 }
 
@@ -44,12 +55,4 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct WeatherView: View {
-    let temp: Int
-    let city: String
-    
-    var body: some View {
-        Text("Weather for \(city) is \(temp)")
-    }
-}
 

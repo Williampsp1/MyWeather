@@ -16,34 +16,41 @@ enum LoadingState {
 }
 
 class WeatherViewModel: ObservableObject {
-    
-    var bag = [AnyCancellable]()
-    let weatherProvider = WeatherServices(apiClient: ApiClient())
-    @Published private var weather: WeatherResponse?
-    @Published var loadingState: LoadingState = .none
-   
-    var temp: Int {
-        guard let temp = weather?.main.temp else {
-            return 0
-        }
-        
-        return Int((temp * 9/5) - 459.67)
+    deinit {
+        task?.cancel()
     }
+    
+    private var task: AnyCancellable?
+    let weatherProvider = WeatherServices()
+    @Published var weather: [WeatherResponse] = []
+  //  @Published var weatherData: WeatherResponse?
+    @Published var loadingState: LoadingState = .none
+    
+//    var temperature: String {
+//        guard let temp = weather.first?.main.temp else {
+//            return "N/A"
+//        }
+//        
+//        return String(format: "%.0F F", temp.farenheit)
+//
+//    }
     
     func loadWeather(city: String) {
         
-        guard let city = city.escaped() else {
+        guard let cityEscaped = city.escaped else {
             print("Bad city")
+            self.loadingState = .failed
             return
         }
-        guard let url = URL.urlForWeather(city) else {
+        guard let url = URL(urlForCity: cityEscaped) else {
             print("Bad URL")
+            self.loadingState = .failed
             return 
         }
         
         loadingState = .loading
- 
-        weatherProvider.weather(url)
+        
+        task = weatherProvider.weather(url)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -53,9 +60,19 @@ class WeatherViewModel: ObservableObject {
                 }
             }, receiveValue: {(data) in
                 
-                self.weather = data 
-               
-                print(data)
-        }).store(in: &bag)
+                guard var weather = data else {
+                    return
+                }
+                weather.city = city
+                
+                
+                
+                if let index = self.weather.firstIndex(where: {$0.city == city}){
+                    self.weather[index] = weather
+                } else {
+                    self.weather.append(weather)
+                }
+                print(weather)
+            })
     }
 }
