@@ -22,11 +22,11 @@ struct Weather: Codable {
 }
 
 extension Weather {
-var temperature: String {
-    
-     String(format: "%.4F F", (temp * 9/5) - 459.67)
-
-}
+    var temperature: String {
+        
+        String(format: "%.4F F", (temp * 9/5) - 459.67)
+        
+    }
 }
 
 

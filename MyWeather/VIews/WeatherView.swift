@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct WeatherView: View {
-        let temp: String
-        let city: String
-        
-        var body: some View {
-            Text("Weather for \(city) is \(temp)")
-        }
+    let temp: String
+    let city: String
+    
+    var body: some View {
+        Text("Weather for \(city) is \(temp)")
+    }
 }
 
 struct WeatherView_Previews: PreviewProvider {

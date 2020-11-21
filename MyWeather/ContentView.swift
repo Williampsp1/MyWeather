@@ -20,32 +20,32 @@ struct ContentView: View {
             }).textFieldStyle(RoundedBorderTextFieldStyle())
             
             
-           
+            
             Spacer()
             List{
                 ForEach(weatherVM.weather) { weatherItem in
                     WeatherView(temp: weatherItem.main.temperature, city: weatherItem.city ?? "City error" )
                 }
             }
-          //  weatherInfoView
+            //  weatherInfoView
             
         }.padding()
         
     }
     
-//    var weatherInfoView: some View {
-//        Group {
-//            if weatherVM.loadingState == .loading {
-//                Text("Loading...")
-//            }
-//            else if weatherVM.loadingState == .success{
-//                WeatherView(temp: weatherVM.temperature, city: city)
-//                
-//            } else if weatherVM.loadingState == .failed {
-//                Text("Could not load weather")
-//            }
-//        }
-//    }
+    //    var weatherInfoView: some View {
+    //        Group {
+    //            if weatherVM.loadingState == .loading {
+    //                Text("Loading...")
+    //            }
+    //            else if weatherVM.loadingState == .success{
+    //                WeatherView(temp: weatherVM.temperature, city: city)
+    //                
+    //            } else if weatherVM.loadingState == .failed {
+    //                Text("Could not load weather")
+    //            }
+    //        }
+    //    }
     
 }
 

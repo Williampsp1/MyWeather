@@ -23,17 +23,7 @@ class WeatherViewModel: ObservableObject {
     private var task: AnyCancellable?
     let weatherProvider = WeatherServices()
     @Published var weather: [WeatherResponse] = []
-  //  @Published var weatherData: WeatherResponse?
     @Published var loadingState: LoadingState = .none
-    
-//    var temperature: String {
-//        guard let temp = weather.first?.main.temp else {
-//            return "N/A"
-//        }
-//        
-//        return String(format: "%.0F F", temp.farenheit)
-//
-//    }
     
     func loadWeather(city: String) {
         
