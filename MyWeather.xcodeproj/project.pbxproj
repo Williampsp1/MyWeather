@@ -21,6 +21,9 @@
 		BA87CF2125663BF5009F51C2 /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA87CF2025663BF5009F51C2 /* URL+.swift */; };
 		BA87CF262566405D009F51C2 /* URLRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA87CF252566405D009F51C2 /* URLRequest+.swift */; };
 		BA87CF2B2566478A009F51C2 /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA87CF2A2566478A009F51C2 /* Double+.swift */; };
+		BAB9B1C42568A11A0041EC8B /* Weather+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB9B1C32568A11A0041EC8B /* Weather+.swift */; };
+		BAB9B1C92568C8CD0041EC8B /* CityFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB9B1C82568C8CD0041EC8B /* CityFinder.swift */; };
+		BAB9B1CE2568CC730041EC8B /* NewCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB9B1CD2568CC730041EC8B /* NewCity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		BA87CF2025663BF5009F51C2 /* URL+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
 		BA87CF252566405D009F51C2 /* URLRequest+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+.swift"; sourceTree = "<group>"; };
 		BA87CF2A2566478A009F51C2 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
+		BAB9B1C32568A11A0041EC8B /* Weather+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Weather+.swift"; sourceTree = "<group>"; };
+		BAB9B1C82568C8CD0041EC8B /* CityFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityFinder.swift; sourceTree = "<group>"; };
+		BAB9B1CD2568CC730041EC8B /* NewCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				BA87CE272560BD98009F51C2 /* WeatherServices.swift */,
+				BAB9B1C82568C8CD0041EC8B /* CityFinder.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -179,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				BA87CF152566259E009F51C2 /* WeatherView.swift */,
+				BAB9B1CD2568CC730041EC8B /* NewCity.swift */,
 			);
 			path = VIews;
 			sourceTree = "<group>";
@@ -190,6 +198,7 @@
 				BA87CF2025663BF5009F51C2 /* URL+.swift */,
 				BA87CF252566405D009F51C2 /* URLRequest+.swift */,
 				BA87CF2A2566478A009F51C2 /* Double+.swift */,
+				BAB9B1C32568A11A0041EC8B /* Weather+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -327,10 +336,13 @@
 				BA87CDF22560BAE5009F51C2 /* ContentView.swift in Sources */,
 				BA87CF2B2566478A009F51C2 /* Double+.swift in Sources */,
 				BA87CE282560BD98009F51C2 /* WeatherServices.swift in Sources */,
+				BAB9B1C92568C8CD0041EC8B /* CityFinder.swift in Sources */,
 				BA87CF2125663BF5009F51C2 /* URL+.swift in Sources */,
 				BA87CF162566259E009F51C2 /* WeatherView.swift in Sources */,
 				BA87CE1F2560BBAB009F51C2 /* WeatherResponse.swift in Sources */,
+				BAB9B1CE2568CC730041EC8B /* NewCity.swift in Sources */,
 				BA87CF262566405D009F51C2 /* URLRequest+.swift in Sources */,
+				BAB9B1C42568A11A0041EC8B /* Weather+.swift in Sources */,
 				BA87CF1C25663B5E009F51C2 /* String+.swift in Sources */,
 				BA87CDF02560BAE5009F51C2 /* MyWeatherApp.swift in Sources */,
 			);
@@ -491,6 +503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MyWeather/Preview Content\"";
+				DEVELOPMENT_TEAM = W7VQ2PD274;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MyWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -512,6 +525,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MyWeather/Preview Content\"";
+				DEVELOPMENT_TEAM = W7VQ2PD274;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MyWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

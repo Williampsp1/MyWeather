@@ -11,7 +11,6 @@ import Combine
 enum LoadingState {
     case none
     case success
-    case loading
     case failed
 }
 
@@ -25,20 +24,13 @@ class WeatherViewModel: ObservableObject {
     @Published var weather: [WeatherResponse] = []
     @Published var loadingState: LoadingState = .none
     
-    func loadWeather(city: String) {
+    func loadWeather(latitude: Double,longitude: Double, city: String) {
         
-        guard let cityEscaped = city.escaped else {
-            print("Bad city")
-            self.loadingState = .failed
-            return
-        }
-        guard let url = URL(urlForCity: cityEscaped) else {
+        guard let url = URL(lat: latitude, lon: longitude) else {
             print("Bad URL")
             self.loadingState = .failed
             return 
         }
-        
-        loadingState = .loading
         
         task = weatherProvider.weather(url)
             .sink(receiveCompletion: { completion in
@@ -54,10 +46,10 @@ class WeatherViewModel: ObservableObject {
                     return
                 }
                 weather.city = city
+                weather.lat = latitude
+                weather.lon = longitude
                 
-                
-                
-                if let index = self.weather.firstIndex(where: {$0.city == city}){
+                if let index = self.weather.firstIndex(where: {$0.lat == latitude && $0.lon == longitude}){
                     self.weather[index] = weather
                 } else {
                     self.weather.append(weather)

@@ -10,14 +10,20 @@ import SwiftUI
 struct WeatherView: View {
     let temp: String
     let city: String
+    let weatherIcon: Image
     
     var body: some View {
-        Text("Weather for \(city) is \(temp)")
+        HStack{
+            Text(city).font(.title)
+            Spacer()
+            Text(temp).font(.title)
+            weatherIcon.resizable().scaledToFit().frame(width:35,height: 35)
+        }.frame( height: 50)
     }
 }
 
 struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherView(temp: "45", city: "omaha")
+        WeatherView(temp: "45", city: "omaha", weatherIcon: Image(systemName: "cloud"))
     }
 }
